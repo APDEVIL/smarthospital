@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Core surface colors — light gray background matches the
+       reference design's #F4F4F6, not pure white, so cards read as
+       elevated surfaces against it. */
+    --background: 240 5% 96%;
+    --foreground: 240 10% 9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 9%;
+
+    /* Primary purple — #7C3AED, the exact CTA color from the reference image */
+    --primary: 263 70% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 240 5% 92%;
+    --secondary-foreground: 240 10% 9%;
+
+    --muted: 240 5% 92%;
+    --muted-foreground: 240 4% 46%;
+
+    --accent: 263 70% 96%;
+    --accent-foreground: 263 70% 40%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 240 6% 88%;
+    --input: 240 6% 88%;
+    --ring: 263 70% 50%;
+
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 240 10% 8%;
+    --foreground: 0 0% 96%;
+
+    --card: 240 10% 11%;
+    --card-foreground: 0 0% 96%;
+
+    --popover: 240 10% 11%;
+    --popover-foreground: 0 0% 96%;
+
+    --primary: 263 70% 58%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 240 8% 16%;
+    --secondary-foreground: 0 0% 96%;
+
+    --muted: 240 8% 16%;
+    --muted-foreground: 240 5% 65%;
+
+    --accent: 263 40% 20%;
+    --accent-foreground: 263 70% 80%;
+
+    --destructive: 0 63% 45%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 240 8% 18%;
+    --input: 240 8% 18%;
+    --ring: 263 70% 58%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* Subtle radial-dot texture used behind the landing page hero and the
+   announcement-banner component — kept as a utility class so it's
+   reusable without repeating the inline style object everywhere. */
+@layer utilities {
+  .bg-dot-grid {
+    background-image: radial-gradient(
+      circle,
+      hsl(var(--foreground) / 0.08) 1px,
+      transparent 1px
+    );
+    background-size: 22px 22px;
+  }
+}
